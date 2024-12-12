@@ -1,5 +1,6 @@
 import React from "react";
-
+import Image from "next/image"
+import Link from "next/link";
 const Footer: React.FC = () => {
     return (
         <>
@@ -7,12 +8,13 @@ const Footer: React.FC = () => {
                 {/* Newsletter Section */}
                 <div className="flex justify-between container mx-auto py-10 border-b border-gray-700">
                     <div className="text-left">
-                        <h2 className="text-2xl font-bold">
-                            <span className="text-yellow-500">Still</span> You Need Our Support?
-                        </h2>
-                        <p className="text-gray-400 mt-2">
-                            Don't wait, make a smart & logical quote here. It's pretty easy.
-                        </p>
+                    <h2 className="text-2xl font-bold">
+    <span className="text-yellow-500">Still</span> You Need Our Support?
+</h2>
+<p className="text-gray-400 mt-2">
+    Don&apos;t wait; make a smart logical quote here. It&apos;s pretty easy.
+</p>
+
                     </div>
                     <div className="flex">
                         <input
@@ -109,10 +111,12 @@ const Footer: React.FC = () => {
                                 },
                             ].map((post, index) => (
                                 <li key={index} className="flex space-x-4">
-                                    <img
+                                    <Image
                                         src={post.image}
                                         alt={post.title}
-                                        className="w-16 h-16 rounded-lg object-cover"
+                                        width={64}
+                                        height={64}
+                                        className="rounded-lg object-cover"
                                     />
                                     <div>
                                         <p className="text-gray-400 text-sm">{post.date}</p>
@@ -132,18 +136,18 @@ const Footer: React.FC = () => {
                         Copyright © 2022 by faizan masood. All Rights Reserved.
                     </p>
                     <div className="flex space-x-4 mt-4 md:mt-0">
-                        <a href="#">
-                            <img src="/facebook_icon.png" alt="Facebook" className="w-6" />
-                        </a>
-                        <a href="#">
-                            <img src="/twitter_icon.png" alt="Twitter" className="w-6" />
-                        </a>
-                        <a href="#">
-                            <img src="/instagram_icon.png" alt="Instagram" className="w-6" />
-                        </a>
-                        <a href="#">
-                            <img src="/youtube_icon.png" alt="YouTube" className="w-6" />
-                        </a>
+                        <Link href="#">
+                            <Image src="/facebook_icon.png" alt="Facebook" width={24} height={24} />
+                        </Link>
+                        <Link href="#">
+                            <Image src="/twitter_icon.png" alt="Twitter" width={24} height={24} />
+                        </Link>
+                        <Link href="#">
+                            <Image src="/instagram_icon.png" alt="Instagram" width={24} height={24} />
+                        </Link>
+                        <Link href="#">
+                            <Image src="/youtube_icon.png" alt="YouTube" width={24} height={24} />
+                        </Link>
                     </div>
                 </div>
             </div>

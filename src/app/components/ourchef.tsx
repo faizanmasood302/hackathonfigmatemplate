@@ -1,4 +1,5 @@
 import { Great_Vibes } from 'next/font/google';
+import Image from 'next/image'
 const greatVibes = Great_Vibes({
   weight: '400',
   subsets: ['latin']
@@ -45,10 +46,12 @@ const OurChefs = () => {
             key={index}
             className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200"
           >
-            <img
+            <Image
               src={chef.image}
               alt={chef.name}
-              className="w-full h-56 object-cover"
+              layout="fill"
+              objectFit="cover"
+              className="w-full h-56"
             />
             <div className="p-4">
               <h3 className="font-bold text-lg text-gray-800">{chef.name}</h3>

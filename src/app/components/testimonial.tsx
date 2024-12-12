@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from "react";
+import Image from 'next/image'
 import {Great_Vibes} from 'next/font/google' 
 
 const greatVibes = Great_Vibes({
@@ -53,10 +54,12 @@ const Testimonial: React.FC = () => {
         <h3 className="text-4xl font-semibold mb-6">What our client are saying</h3>
         <div className="bg-white text-black p-6 rounded-lg shadow-md relative mx-auto max-w-2xl mt-8">
           <div className="absolute top-[-2rem] left-1/2 transform -translate-x-1/2">
-            <img
+            <Image
               src={testimonials[currentIndex].image}
               alt={testimonials[currentIndex].name}
-              className="w-16 h-16 rounded-full border-4 border-white shadow-md"
+              width={64}
+              height={64}
+              className="rounded-full border-4 border-white shadow-md"
             />
           </div>
           <p className="text-center mt-6 text-gray-700">{`"${testimonials[currentIndex].text}"`}</p>

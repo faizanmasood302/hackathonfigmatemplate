@@ -1,5 +1,5 @@
 import React from "react";
-
+import Image from "next/image"
 type BlogPost = {
   image: string;
   date: string;
@@ -43,10 +43,12 @@ function BlogSection () {
               key={index}
               className="bg-white text-black rounded-lg overflow-hidden shadow-lg"
             >
-              <img
+              <Image
                 src={post.image}
                 alt={post.title}
-                className="w-full h-60 object-cover"
+                layout="fill"
+                objectFit="cover"
+                className="w-full h-60"
               />
               <div className="p-4">
                 <p className="text-sm text-gray-500 mb-2">{post.date}</p>

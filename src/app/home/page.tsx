@@ -1,6 +1,6 @@
 import picture from '/public/img1.png';
 import Image from 'next/image'
-import { FaFacebook, FaInstagram, FaTwitter, FaHamburger, FaCookie, FaGlassWhiskey, FaHeart, FaStar } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaTwitter, FaHamburger, FaCookie,FaGlassWhiskey } from 'react-icons/fa';
 import { Great_Vibes } from 'next/font/google';
 import { FaUtensils, FaPizzaSlice, FaUserTie } from "react-icons/fa";
 import MenuGallery from '../components/items';
