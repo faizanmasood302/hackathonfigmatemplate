@@ -1,14 +1,14 @@
-"use client"; // This makes the component client-side
+// "use client"; // This makes the component client-side
 
-import { usePathname } from "next/navigation";
-import Header from "../components/header";
-import HomeHeader from "../components/homeheader";
+// import { usePathname } from "next/navigation";
+// import Header from "../components/header";
+// import HomeHeader from "../components/homeheader";
 
-export default function HeaderSelector() {
-  const pathname = usePathname();
+// export default function HeaderSelector() {
+//   const pathname = usePathname();
 
-  // Render HomeHeader for the home page ("/")
-  const isHomePage = pathname === "/home";
+//   // Render HomeHeader for the home page ("/")
+//   const isHomePage = pathname === "/home";
 
-  return isHomePage ? <HomeHeader /> : <Header />;
-}
+//   return isHomePage ? <HomeHeader /> : <Header />;
+// }

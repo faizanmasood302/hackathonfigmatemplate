@@ -7,6 +7,8 @@ import MenuGallery from '../components/items';
 import OurChefs from '../components/ourchef';
 import Testimonial from '../components/testimonial'
 import BlogSection from '../components/blog'
+import HomeHeader from "../components/homeheader"
+
 
 const greatVibes = Great_Vibes({
     weight: '400',
@@ -21,6 +23,7 @@ function Home() {
 
     return (
         <>
+        <HomeHeader/>
             <div className="relative h-screen w-full">
                 <div className="absolute inset-0">
                     <Image
@@ -242,7 +245,6 @@ function Home() {
                         <Image
                             src="/bg.png" // Replace with the correct image path
                             alt="Food"
-                            layout="responsive"
                             width={2560} // Increased width for larger display
                             height={625} // Adjusted height to maintain aspect ratio
                             className=""

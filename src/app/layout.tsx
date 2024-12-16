@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import HeaderSelector from "./components/headerselector";
+// import HeaderSelector from "./components/headerselector";
+// import Header from "./components/header";
+
 import Footer from "./components/footer";
 // Import the client component
 import "./globals.css";
@@ -32,7 +34,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <HeaderSelector />  {/* Client-side Header Selector */}
+      
         {children}
         <Footer/>
       </body>

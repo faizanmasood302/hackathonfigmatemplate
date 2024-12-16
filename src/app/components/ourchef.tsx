@@ -9,22 +9,22 @@ const OurChefs = () => {
     {
       name: "D. Scoriesh",
       role: "Assistant Chef",
-      image: "/chef card.png", // Replace with actual image path
+      image: "/chef.png", // Replace with actual image path
     },
     {
       name: "A. Brown",
       role: "Head Chef",
-      image: "/card 2.png", // Replace with actual image path
+      image: "/chef1.png", // Replace with actual image path
     },
     {
       name: "M. Smith",
       role: "Pastry Chef",
-      image: "/card 3.png", // Replace with actual image path
+      image: "/chef2.png", // Replace with actual image path
     },
     {
       name: "J. Doe",
       role: "Sous Chef",
-      image: "/card 4.png", // Replace with actual image path
+      image: "/chef3.png", // Replace with actual image path
     },
   ];
 
@@ -47,12 +47,12 @@ const OurChefs = () => {
             className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200"
           >
             <Image
-              src={chef.image}
+             src={chef.image}
               alt={chef.name}
-              layout="fill"
-              objectFit="cover"
-              className="w-full h-56"
-            />
+              width={312}
+              height={391}
+              className="object-cover object-center"
+/>
             <div className="p-4">
               <h3 className="font-bold text-lg text-gray-800">{chef.name}</h3>
               <p className="text-sm text-gray-600">{chef.role}</p>

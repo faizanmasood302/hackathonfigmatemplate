@@ -1,35 +1,35 @@
 import React from "react";
-import Image from "next/image"
+import Image from "next/image";
 import Link from "next/link";
+
 const Footer: React.FC = () => {
     return (
         <>
-            <footer className="bg-black text-white px-20">
+            <footer className="bg-black text-white px-6 sm:px-10 lg:px-20">
                 {/* Newsletter Section */}
-                <div className="flex justify-between container mx-auto py-10 border-b border-gray-700">
+                <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center container mx-auto py-10 border-b border-gray-700 gap-6 lg:gap-0">
                     <div className="text-left">
-                    <h2 className="text-2xl font-bold">
-    <span className="text-yellow-500">Still</span> You Need Our Support?
-</h2>
-<p className="text-gray-400 mt-2">
-    Don&apos;t wait; make a smart logical quote here. It&apos;s pretty easy.
-</p>
-
+                        <h2 className="text-2xl font-bold">
+                            <span className="text-yellow-500">Still</span> You Need Our Support?
+                        </h2>
+                        <p className="text-gray-400 mt-2">
+                            Don&apos;t wait; make a smart logical quote here. It&apos;s pretty easy.
+                        </p>
                     </div>
-                    <div className="flex">
+                    <div className="w-full lg:w-auto flex flex-col sm:flex-row">
                         <input
                             type="email"
                             placeholder="Enter Your Email"
-                            className="px-4 py-2 rounded-l-lg bg-gray-800 text-white border border-yellow-500 focus:outline-none"
+                            className="px-4 py-2 rounded-t-lg sm:rounded-l-lg sm:rounded-t-none bg-gray-800 text-white border border-yellow-500 focus:outline-none"
                         />
-                        <button className="px-6 py-2 bg-yellow-500 text-black font-semibold rounded-r-lg hover:bg-yellow-600">
+                        <button className="px-6 py-2 bg-yellow-500 text-black font-semibold rounded-b-lg sm:rounded-r-lg sm:rounded-b-none hover:bg-yellow-600">
                             Subscribe Now
                         </button>
                     </div>
                 </div>
 
                 {/* Footer Content */}
-                <div className="container mx-auto py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div className="container mx-auto py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     {/* About Us */}
                     <div>
                         <h3 className="text-xl font-semibold mb-4">About Us.</h3>
@@ -80,12 +80,12 @@ const Footer: React.FC = () => {
                     <div>
                         <h3 className="text-xl font-semibold mb-4">Help?</h3>
                         <ul className="space-y-2 text-gray-400">
-                            <li>FAQ</li>
-                            <li>Terms & Conditions</li>
-                            <li>Reporting</li>
-                            <li>Documentation</li>
-                            <li>Support Policy</li>
-                            <li>Privacy</li>
+                            <li><Link href="/faq">FAQ</Link></li>
+                            <li><Link href="/terms">Terms & Conditions</Link></li>
+                            <li><Link href="/reporting">Reporting</Link></li>
+                            <li><Link href="/ourchefs">Documentation</Link></li>
+                            <li><Link href="/error">Support Policy</Link></li>
+                            <li><Link href="/privacy">Privacy</Link></li>
                         </ul>
                     </div>
 
@@ -110,7 +110,7 @@ const Footer: React.FC = () => {
                                     title: "Post Title Three",
                                 },
                             ].map((post, index) => (
-                                <li key={index} className="flex space-x-4">
+                                <li key={index} className="flex space-x-4 items-center">
                                     <Image
                                         src={post.image}
                                         alt={post.title}
@@ -127,15 +127,15 @@ const Footer: React.FC = () => {
                         </ul>
                     </div>
                 </div>
-
-                {/* Footer Bottom */}
             </footer>
+
+            {/* Footer Bottom */}
             <div className="bg-gray-900 py-6">
-                <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-                    <p className="text-gray-500">
+                <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p className="text-gray-500 text-center md:text-left">
                         Copyright © 2022 by faizan masood. All Rights Reserved.
                     </p>
-                    <div className="flex space-x-4 mt-4 md:mt-0">
+                    <div className="flex space-x-4">
                         <Link href="#">
                             <Image src="/facebook_icon.png" alt="Facebook" width={24} height={24} />
                         </Link>

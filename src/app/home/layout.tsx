@@ -1,6 +1,6 @@
 "use client";
-import HeaderSelector from "../components/headerselector"; // Use HeaderSelector
-
+// import HeaderSelector from "../components/headerselector"; // Use HeaderSelector
+import HomeHeader from "../components/homeheader"
 export default function BlogLayout({
   children,
 }: {
@@ -8,7 +8,7 @@ export default function BlogLayout({
 }) {
   return (
     <section>
-      <HeaderSelector />  {/* Conditional header rendering */}
+      <HomeHeader/>  {/* Conditional header rendering */}
       {children}
     </section>
   );
