@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image'
+import {Menu} from 'lucide-react'
+
 interface HeaderProps {
   children?: React.ReactNode; // Allow child elements
 }
@@ -7,6 +9,7 @@ interface HeaderProps {
 export default function Header({ children }: HeaderProps) {
   return (
     <header className="bg-black text-white">
+      
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         {/* Logo */}
         <div className="text-2xl font-bold">
@@ -21,7 +24,7 @@ export default function Header({ children }: HeaderProps) {
           <Link href="/blog"  className="hover:text-orange-500">Blog</Link>
           <Link href="/pages" className="hover:text-orange-500">Pages </Link>
           <Link href="/about-us" className="hover:text-orange-500">About </Link>
-          <Link href="/shoppingcart"  className="hover:text-orange-500">Shop </Link>
+          <Link href="/shop"  className="hover:text-orange-500">Shop </Link>
           <Link href="/contact" className="hover:text-orange-500">Contact </Link>
         </nav>
 
@@ -42,16 +45,17 @@ export default function Header({ children }: HeaderProps) {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7c-.1.2-.15.4-.15.6a1 1 0 001 1h12a1 1 0 001-1c0-.2-.05-.4-.15-.6L17 13M7 13H3m10 8a2 2 0 100-4 2 2 0 000 4zm-8 0a2 2 0 100-4 2 2 0 000 4z"></path>
             </svg>
             </Link>
-         </div>
+         </div> 
+         <Menu className="md:hidden"/>
       </div>
       <div className="relative">
-      <Image src="/header.png" alt="header"  width={1960} height={325}  />
+      <Image src="/header.png" alt="header"  width={1960} height={325} className='self-center'  />
       {children}
       
       </div>
       
       {/* Hero Section */}
-    
+   
       
     </header>
   );

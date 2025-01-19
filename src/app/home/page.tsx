@@ -33,7 +33,7 @@ function Home() {
                         priority
                         className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-black opacity-90" />
+                    <span className="absolute inset-0 bg-black opacity-90" />
                 </div>
                 <div className="absolute left-20 top-1/2 transform -translate-y-1/2 text-left space-y-4">
                     <h1 className={`text-white text-2xl ${greatVibes.className}`}>Its quick & amusing</h1>

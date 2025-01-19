@@ -36,7 +36,7 @@ const OurChefPage: React.FC = () => {
 
       <div className="container mx-auto p-4">
         <h1 className="text-center text-4xl font-bold mb-6">Our Chefs</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className= "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {chefs.map((chef) => (
             <div key={chef.id} className="flex flex-col items-center">
               <div className="relative">
@@ -52,7 +52,7 @@ const OurChefPage: React.FC = () => {
               <h2 className="text-lg font-semibold mt-2 text-center">
                 {chef.name}
               </h2>
-              <p className="text-center text-gray-600">Chef</p>
+              <p className="text-center text-gray-600">Chef</p> 
             </div>
           ))}
         </div>
