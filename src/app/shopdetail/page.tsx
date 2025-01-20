@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Header from '.././components/header'
 import Image from "next/image";
 import ProductAdditionalInfo from '.././components/descriptionsection'
-import Link from 'next/link'
+import Link from "next/link"
 import { FaFacebookF, FaInstagram, FaPinterestP, FaTwitter, FaYoutube , FaHeart} from "react-icons/fa";
 interface Shopdet {
   id: number;

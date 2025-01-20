@@ -9,7 +9,7 @@ interface Chef {
 }
 
 const chefs: Chef[] = [
-  { id: 1, name: 'Chef John', imageUrl: "/ourchefs1.png" },
+  { id: 1, name: "Chef John", imageUrl: "/ourchefs1.png" },
   { id: 2, name: "Chef Alice", imageUrl: "/ourchefs2.png" },
   { id: 3, name: "Chef Marco", imageUrl: "/ourchefs3.png" },
   { id: 4, name: "Chef Maria", imageUrl: "/ourchefs4.png" },
@@ -34,25 +34,25 @@ const OurChefPage: React.FC = () => {
         </div>
       </Header>
 
-      <div className="container mx-auto p-4">
-        <h1 className="text-center text-4xl font-bold mb-6">Our Chefs</h1>
-        <div className= "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-center text-3xl md:text-4xl font-bold mb-8 md:mb-12">Our Chefs</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
           {chefs.map((chef) => (
-            <div key={chef.id} className="flex flex-col items-center">
-              <div className="relative">
+            <div key={chef.id}>
+              <div className="relative w-full h-48 sm:h-64 md:h-72 lg:h-80 mb-4">
                 <Image
                   src={chef.imageUrl}
                   alt={chef.name}
-                  width={312}
-                  height={379}
-                  objectFit="cover"
-                  className="rounded-md"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  className="rounded-lg object-cover"
+                  priority={chef.id <= 4}
                 />
               </div>
-              <h2 className="text-lg font-semibold mt-2 text-center">
+              <h2 className="text-lg md:text-xl font-semibold mt-2 text-center">
                 {chef.name}
               </h2>
-              <p className="text-center text-gray-600">Chef</p> 
+              <p className="text-center text-gray-600 text-sm md:text-base">Chef</p>
             </div>
           ))}
         </div>

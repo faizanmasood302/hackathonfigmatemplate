@@ -8,7 +8,7 @@ export default function Checkout() {
     <>
 <Header>
         {/* Text Positioned Absolutely */}
-        <div className='absolute inset-0 flex items-center justify-center'>
+        <div className="absolute inset-0 flex items-center justify-center">
           <p className="text-white text-2xl md:text-3xl font-semibold">
             Home &gt; Menu
           </p>

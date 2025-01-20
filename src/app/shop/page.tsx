@@ -13,7 +13,7 @@ interface Shopdet {
 
 // Array of food items
 const food: Shopdet[] = [
-    { id: 1, name:'burger', price: "$10.00", ImageUrl: "/shop1.png" },
+    { id: 1, name: "burger", price: "$10.00", ImageUrl: "/shop1.png" },
     { id: 2, name: "cheese burger", price: "$10.00", ImageUrl: "/shop2.png" },
     { id: 3, name: "beef burger", price: "$10.00", ImageUrl: "/shop3.png" },
     { id: 4, name: "mass Burger", price: "$10.00", ImageUrl: "/shop4.png" },

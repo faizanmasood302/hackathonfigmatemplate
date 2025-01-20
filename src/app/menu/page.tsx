@@ -1,382 +1,365 @@
 import Header from '.././components/header';
 import Image from 'next/image';
 import { FaHamburger, FaPizzaSlice, FaUserTie, FaUtensils } from 'react-icons/fa';
+
 export default function Menu() {
   return (
-
-    <div className="min-h-screen bg-white text-black flex flex-col items-center justify-center space-y-12">
+    <div className="min-h-screen bg-white text-black flex flex-col items-center justify-center">
       <Header>
-        {/* Text Positioned Absolutely */}
-        <div className='absolute inset-0 flex items-center justify-center'>
-          <p className="text-white text-2xl md:text-3xl font-semibold">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <p className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">
             Home &gt; Menu
           </p>
         </div>
       </Header>
 
       {/* Starter Menu Section 1 */}
-      <div className="flex w-3/4  mt-12">
+      <div className="flex flex-col lg:flex-row w-full px-4 md:w-11/12 lg:w-3/4 mt-12">
         {/* Image on Left */}
-        <div className="w-1/2 flex items-center justify-center">
+        <div className="w-full lg:w-1/2 flex items-center justify-center mb-8 lg:mb-0">
           <Image
-            src="/menuimg.png" // Replace with the first image's path
+            src="/menuimg.png"
             alt="Starter Menu Dish"
             width={400}
             height={400}
-            className="rounded-lg"
+            className="rounded-lg w-full max-w-md object-cover"
           />
         </div>
         {/* Description on Right */}
-        <div className="w-1/2 px-8">
-          <h1 className="text-4xl font-bold mb-6 flex items-center">
+        <div className="w-full lg:w-1/2 px-4 lg:px-8">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 flex items-center">
             <span className="mr-2">Starter Menu</span>
             <Image
-              src="/Coffee.png" // Replace with the cup icon's path
+              src="/Coffee.png"
               alt="Cup Icon"
               width={24}
               height={24}
             />
           </h1>
-          <div className="space-y-6">
-            <div className="border-b border-gray-700 pb-4">
-              <div className="flex justify-between">
-                <h2 className="text-xl font-semibold">Alder Grilled Chinook Salmon</h2>
-                <span className="text-orange-500 text-lg">32$</span>
+          <div className="space-y-4 md:space-y-6">
+            {[
+              {
+                title: "Alder Grilled Chinook Salmon",
+                price: "32$",
+                desc: "Toasted French bread topped with romano, cheddar",
+                cal: "560 CAL"
+              },
+              {
+                title: "Alder Grilled Chinook Salmon",
+                price: "32$",
+                desc: "Toasted French bread topped with romano, cheddar",
+                cal: "560 CAL"
+              },
+              {
+                title: "Berries and creme tart",
+                price: "43$",
+                desc: "Gorgonzola, ricotta, mozzarella, taleggio",
+                cal: "700 CAL",
+                highlight: true
+              },
+              {
+                title: "Tormentoso Bush Pizza Pintoage",
+                price: "14$",
+                desc: "Ground cumin, avocados, peeled and cubed",
+                cal: "1000 CAL"
+              },
+              {
+                title: "Spicy Vegan Potato Curry",
+                price: "35$",
+                desc: "Spreadable cream cheese, crumbled blue cheese",
+                cal: "560 CAL"
+              }
+            ].map((item, index, arr) => (
+              <div key={index} className={index !== arr.length - 1 ? "border-b border-gray-700 pb-4" : ""}>
+                <div className="flex justify-between">
+                  <h2 className={`text-lg md:text-xl font-semibold ${item.highlight ? 'text-orange-500' : ''}`}>
+                    {item.title}
+                  </h2>
+                  <span className="text-orange-500 text-lg">{item.price}</span>
+                </div>
+                <p className="text-gray-400 text-sm md:text-base">{item.desc}</p>
+                <p className="text-gray-500 text-xs md:text-sm mt-2">{item.cal}</p>
               </div>
-              <p className="text-gray-400">Toasted French bread topped with romano, cheddar</p>
-              <p className="text-gray-500 text-sm mt-2">560 CAL</p>
-            </div>
-            {/* Menu Item */}
-            <div className="border-b border-gray-700 pb-4">
-              <div className="flex justify-between">
-                <h2 className="text-xl font-semibold">Alder Grilled Chinook Salmon</h2>
-                <span className="text-orange-500 text-lg">32$</span>
-              </div>
-              <p className="text-gray-400">Toasted French bread topped with romano, cheddar</p>
-              <p className="text-gray-500 text-sm mt-2">560 CAL</p>
-            </div>
-
-            {/* Menu Item */}
-            <div className="border-b border-gray-700 pb-4">
-              <div className="flex justify-between">
-                <h2 className="text-xl font-semibold text-orange-500">Berries and creme tart</h2>
-                <span className="text-orange-500 text-lg">43$</span>
-              </div>
-              <p className="text-gray-400">Gorgonzola, ricotta, mozzarella, taleggio</p>
-              <p className="text-gray-500 text-sm mt-2">700 CAL</p>
-            </div>
-
-            {/* Menu Item */}
-            <div className="border-b border-gray-700 pb-4">
-              <div className="flex justify-between">
-                <h2 className="text-xl font-semibold">Tormentoso Bush Pizza Pintoage</h2>
-                <span className="text-orange-500 text-lg">14$</span>
-              </div>
-              <p className="text-gray-400">Ground cumin, avocados, peeled and cubed</p>
-              <p className="text-gray-500 text-sm mt-2">1000 CAL</p>
-            </div>
-
-            {/* Menu Item */}
-            <div>
-              <div className="flex justify-between">
-                <h2 className="text-xl font-semibold">Spicy Vegan Potato Curry</h2>
-                <span className="text-orange-500 text-lg">35$</span>
-              </div>
-              <p className="text-gray-400">Spreadable cream cheese, crumbled blue cheese</p>
-              <p className="text-gray-500 text-sm mt-2">560 CAL</p>
-            </div>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Starter Menu Section 2 */}
-      <div className="flex w-3/4 flex-row-reverse">
+      <div className="flex flex-col lg:flex-row-reverse w-full px-4 md:w-11/12 lg:w-3/4 mt-12">
         {/* Image on Right */}
-        <div className="w-1/2 flex items-center justify-center">
+        <div className="w-full lg:w-1/2 flex items-center justify-center mb-8 lg:mb-0">
           <Image
-            src="/menuimg2.png" // Replace with the second image's path
+            src="/menuimg2.png"
             alt="Starter Menu Dish 2"
             width={400}
             height={400}
-            className="rounded-lg"
+            className="rounded-lg w-full max-w-md object-cover"
           />
         </div>
         {/* Description on Left */}
-        <div className="w-1/2 px-8">
-          <h1 className="text-4xl font-bold mb-6 flex items-center">
+        <div className="w-full lg:w-1/2 px-4 lg:px-8">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 flex items-center">
             <span className="mr-2">Starter Menu 2</span>
             <Image
-              src="/coffee.png" // Replace with the cup icon's path
+              src="/coffee.png"
               alt="Cup Icon"
               width={24}
               height={24}
             />
           </h1>
-          <div className="space-y-6">
-            <div className="border-b border-gray-700 pb-4">
-              <div className="flex justify-between">
-                <h2 className="text-xl font-semibold">Berries and creme tart</h2>
-                <span className="text-orange-500 text-lg">43$</span>
+          <div className="space-y-4 md:space-y-6">
+            {[
+              {
+                title: "Berries and creme tart",
+                price: "43$",
+                desc: "Gorgonzola, ricotta, mozzarella, taleggio",
+                cal: "700 CAL"
+              },
+              {
+                title: "Alder Grilled Chinook Salmon",
+                price: "32$",
+                desc: "Toasted French bread topped with romano, cheddar",
+                cal: "560 CAL"
+              },
+              {
+                title: "Berries and creme tart",
+                price: "43$",
+                desc: "Gorgonzola, ricotta, mozzarella, taleggio",
+                cal: "700 CAL",
+                highlight: true
+              },
+              {
+                title: "Tormentoso Bush Pizza Pintoage",
+                price: "14$",
+                desc: "Ground cumin, avocados, peeled and cubed",
+                cal: "1000 CAL"
+              },
+              {
+                title: "Spicy Vegan Potato Curry",
+                price: "35$",
+                desc: "Spreadable cream cheese, crumbled blue cheese",
+                cal: "560 CAL"
+              }
+            ].map((item, index, arr) => (
+              <div key={index} className={index !== arr.length - 1 ? "border-b border-gray-700 pb-4" : ""}>
+                <div className="flex justify-between">
+                  <h2 className={`text-lg md:text-xl font-semibold ${item.highlight ? 'text-orange-500' : ''}`}>
+                    {item.title}
+                  </h2>
+                  <span className="text-orange-500 text-lg">{item.price}</span>
+                </div>
+                <p className="text-gray-400 text-sm md:text-base">{item.desc}</p>
+                <p className="text-gray-500 text-xs md:text-sm mt-2">{item.cal}</p>
               </div>
-              <p className="text-gray-400">Gorgonzola, ricotta, mozzarella, taleggio</p>
-              <p className="text-gray-500 text-sm mt-2">700 CAL</p>
-            </div>
-          </div>
-          {/* Menu Item */}
-          <div className="border-b border-gray-700 pb-4">
-            <div className="flex justify-between">
-              <h2 className="text-xl font-semibold">Alder Grilled Chinook Salmon</h2>
-              <span className="text-orange-500 text-lg">32$</span>
-            </div>
-            <p className="text-gray-400">Toasted French bread topped with romano, cheddar</p>
-            <p className="text-gray-500 text-sm mt-2">560 CAL</p>
-          </div>
-
-          {/* Menu Item */}
-          <div className="border-b border-gray-700 pb-4">
-            <div className="flex justify-between">
-              <h2 className="text-xl font-semibold text-orange-500">Berries and creme tart</h2>
-              <span className="text-orange-500 text-lg">43$</span>
-            </div>
-            <p className="text-gray-400">Gorgonzola, ricotta, mozzarella, taleggio</p>
-            <p className="text-gray-500 text-sm mt-2">700 CAL</p>
-          </div>
-
-          {/* Menu Item */}
-          <div className="border-b border-gray-700 pb-4">
-            <div className="flex justify-between">
-              <h2 className="text-xl font-semibold">Tormentoso Bush Pizza Pintoage</h2>
-              <span className="text-orange-500 text-lg">14$</span>
-            </div>
-            <p className="text-gray-400">Ground cumin, avocados, peeled and cubed</p>
-            <p className="text-gray-500 text-sm mt-2">1000 CAL</p>
-          </div>
-
-          {/* Menu Item */}
-          <div>
-            <div className="flex justify-between">
-              <h2 className="text-xl font-semibold">Spicy Vegan Potato Curry</h2>
-              <span className="text-orange-500 text-lg">35$</span>
-            </div>
-            <p className="text-gray-400">Spreadable cream cheese, crumbled blue cheese</p>
-            <p className="text-gray-500 text-sm mt-2">560 CAL</p>
+            ))}
           </div>
         </div>
       </div>
-      <div className="relative w-screen mx-auto">
-        {/* Image Container */}
+
+      {/* Stats Section */}
+      <div className="relative w-full mt-12">
         <div className="relative">
-          <div>
-            <Image
-              src="/bg.png" // Replace with the correct image path
-              alt="Food"
-              layout="responsive"
-              width={2560} // Increased width for larger display
-              height={625} // Adjusted height to maintain aspect ratio
-              className=""
-            />
-            <div className="absolute inset-0 bg-black opacity-90" />
+          <Image
+            src="/bg.png"
+            alt="Food"
+            width={2560}
+            height={625}
+            className="w-full object-cover h-[300px] md:h-[400px] lg:h-[500px]"
+          />
+          <div className="absolute inset-0 bg-black opacity-90" />
+        </div>
 
-          </div>
-          {/* Overlay Icons */}
-          <div className="absolute inset-0 flex items-center justify-evenly">
-            {/* Chef Icon */}
-            <div className="text-center text-white">
-              <FaUserTie className="text-4xl mx-auto mb-2 text-orange-500" />
-              <h3 className="font-bold">Professional Chef</h3>
-              <p>420</p>
-            </div>
-
-            {/* Burger Icon */}
-            <div className="text-center text-white">
-              <FaHamburger className="text-4xl mx-auto mb-2 text-orange-500" />
-              <h3 className="font-bold">Items of Food</h3>
-              <p>320</p>
-            </div>
-
-            {/* Fork and Spoon Icon */}
-            <div className="text-center text-white">
-              <FaUtensils className="text-4xl mx-auto mb-2 text-orange-500" />
-              <h3 className="font-bold">Years of Experience</h3>
-              <p>30+</p>
-            </div>
-
-            {/* Pizza Slice Icon */}
-            <div className="text-center text-white">
-              <FaPizzaSlice className="text-4xl mx-auto mb-2 text-orange-500" />
-              <h3 className="font-bold">Happy Customers</h3>
-              <p>220</p>
-            </div>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 px-4 w-full max-w-7xl">
+            {[
+              { Icon: FaUserTie, title: "Professional Chef", count: "420" },
+              { Icon: FaHamburger, title: "Items of Food", count: "320" },
+              { Icon: FaUtensils, title: "Years of Experience", count: "30+" },
+              { Icon: FaPizzaSlice, title: "Happy Customers", count: "220" }
+            ].map(({ Icon, title, count }) => (
+              <div key={title} className="text-center text-white">
+                <Icon className="text-3xl md:text-4xl mx-auto mb-2 text-orange-500" />
+                <h3 className="font-bold text-sm md:text-base lg:text-lg">{title}</h3>
+                <p className="text-sm md:text-base lg:text-lg">{count}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Starter Menu Section 3 */}
-      <div className="flex w-3/4 mx-auto items-center gap-6">
+      <div className="flex flex-col lg:flex-row w-full px-4 md:w-11/12 lg:w-3/4 mt-12">
         {/* Image on Left */}
-        <div className="w-1/2 flex items-center justify-center">
+        <div className="w-full lg:w-1/2 flex items-center justify-center mb-8 lg:mb-0">
           <Image
-            src="/menuimg3.png" // Replace with the third image's path
+            src="/menuimg3.png"
             alt="Starter Menu Dish 3"
             width={400}
             height={400}
-            className="rounded-lg object-cover"
+            className="rounded-lg w-full max-w-md object-cover"
           />
         </div>
         {/* Description on Right */}
-        <div className="w-1/2 px-8 flex flex-col justify center">
-          <h1 className="text-4xl font-bold mb-6 flex items-center">
+        <div className="w-full lg:w-1/2 px-4 lg:px-8">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 flex items-center">
             <span className="mr-2">Starter Menu 3</span>
             <Image
-              src="/coffee.png" // Replace with the cup icon's path
+              src="/coffee.png"
               alt="Cup Icon"
               width={24}
               height={24}
             />
           </h1>
-          <div className="space-y-6">
-            <div className="border-b border-gray-700 pb-4">
-              <div className="flex justify-between">
-                <h2 className="text-xl font-semibold">Tormentoso Bush Pizza Pintoage</h2>
-                <span className="text-orange-500 text-lg">14$</span>
+          <div className="space-y-4 md:space-y-6">
+            {[
+              {
+                title: "Tormentoso Bush Pizza Pintoage",
+                price: "14$",
+                desc: "Ground cumin, avocados, peeled and cubed",
+                cal: "1000 CAL"
+              },
+              {
+                title: "Alder Grilled Chinook Salmon",
+                price: "32$",
+                desc: "Toasted French bread topped with romano, cheddar",
+                cal: "560 CAL"
+              },
+              {
+                title: "Berries and creme tart",
+                price: "43$",
+                desc: "Gorgonzola, ricotta, mozzarella, taleggio",
+                cal: "700 CAL",
+                highlight: true
+              },
+              {
+                title: "Tormentoso Bush Pizza Pintoage",
+                price: "14$",
+                desc: "Ground cumin, avocados, peeled and cubed",
+                cal: "1000 CAL"
+              },
+              {
+                title: "Spicy Vegan Potato Curry",
+                price: "35$",
+                desc: "Spreadable cream cheese, crumbled blue cheese",
+                cal: "560 CAL"
+              }
+            ].map((item, index, arr) => (
+              <div key={index} className={index !== arr.length - 1 ? "border-b border-gray-700 pb-4" : ""}>
+                <div className="flex justify-between">
+                  <h2 className={`text-lg md:text-xl font-semibold ${item.highlight ? 'text-orange-500' : ''}`}>
+                    {item.title}
+                  </h2>
+                  <span className="text-orange-500 text-lg">{item.price}</span>
+                </div>
+                <p className="text-gray-400 text-sm md:text-base">{item.desc}</p>
+                <p className="text-gray-500 text-xs md:text-sm mt-2">{item.cal}</p>
               </div>
-              <p className="text-gray-400">Ground cumin, avocados, peeled and cubed</p>
-              <p className="text-gray-500 text-sm mt-2">1000 CAL</p>
-            </div>
-            {/* Menu Item */}
-            <div className="border-b border-gray-700 pb-4">
-              <div className="flex justify-between">
-                <h2 className="text-xl font-semibold">Alder Grilled Chinook Salmon</h2>
-                <span className="text-orange-500 text-lg">32$</span>
-              </div>
-              <p className="text-gray-400">Toasted French bread topped with romano, cheddar</p>
-              <p className="text-gray-500 text-sm mt-2">560 CAL</p>
-            </div>
-
-            {/* Menu Item */}
-            <div className="border-b border-gray-700 pb-4">
-              <div className="flex justify-between">
-                <h2 className="text-xl font-semibold text-orange-500">Berries and creme tart</h2>
-                <span className="text-orange-500 text-lg">43$</span>
-              </div>
-              <p className="text-gray-400">Gorgonzola, ricotta, mozzarella, taleggio</p>
-              <p className="text-gray-500 text-sm mt-2">700 CAL</p>
-            </div>
-
-            {/* Menu Item */}
-            <div className="border-b border-gray-700 pb-4">
-              <div className="flex justify-between">
-                <h2 className="text-xl font-semibold">Tormentoso Bush Pizza Pintoage</h2>
-                <span className="text-orange-500 text-lg">14$</span>
-              </div>
-              <p className="text-gray-400">Ground cumin, avocados, peeled and cubed</p>
-              <p className="text-gray-500 text-sm mt-2">1000 CAL</p>
-            </div>
-
-            {/* Menu Item */}
-            <div>
-              <div className="flex justify-between">
-                <h2 className="text-xl font-semibold">Spicy Vegan Potato Curry</h2>
-                <span className="text-orange-500 text-lg">35$</span>
-              </div>
-              <p className="text-gray-400">Spreadable cream cheese, crumbled blue cheese</p>
-              <p className="text-gray-500 text-sm mt-2">560 CAL</p>
-            </div>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Starter Menu Section 4 */}
-      <div className="flex w-3/4 flex-row-reverse mb-12">
+      <div className="flex flex-col lg:flex-row-reverse w-full px-4 md:w-11/12 lg:w-3/4 mt-12 mb-12">
         {/* Image on Right */}
-        <div className="w-1/2 flex items-center justify-center">
+        <div className="w-full lg:w-1/2 flex items-center justify-center mb-8 lg:mb-0">
           <Image
-            src="/menuimg4.png" // Replace with the fourth image's path
+            src="/menuimg4.png"
             alt="Starter Menu Dish 4"
             width={400}
             height={400}
-            className="rounded-lg"
+            className="rounded-lg w-full max-w-md object-cover"
           />
         </div>
         {/* Description on Left */}
-        <div className="w-1/2 px-8  ">
-          <h1 className="text-4xl font-bold mb-6 flex items-center">
+        <div className="w-full lg:w-1/2 px-4 lg:px-8">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 flex items-center">
             <span className="mr-2">Starter Menu 4</span>
             <Image
-              src="/coffee.png" // Replace with the cup icon's path
+              src="/coffee.png"
               alt="Cup Icon"
               width={24}
               height={24}
             />
           </h1>
-          <div className="space-y-6 ">
-            <div className="border-b border-gray-700 pb-4">
-              <div className="flex justify-between">
-                <h2 className="text-xl font-semibold">Spicy Vegan Potato Curry</h2>
-                <span className="text-orange-500 text-lg">35$</span>
+          <div className="space-y-4 md:space-y-6">
+            {[
+              {
+                title: "Spicy Vegan Potato Curry",
+                price: "35$",
+                desc: "Spreadable cream cheese, crumbled blue cheese",
+                cal: "560 CAL"
+              },
+              {
+                title: "Alder Grilled Chinook Salmon",
+                price: "32$",
+                desc: "Toasted French bread topped with romano, cheddar",
+                cal: "560 CAL"
+              },
+              {
+                title: "Berries and creme tart",
+                price: "43$",
+                desc: "Gorgonzola, ricotta, mozzarella, taleggio",
+                cal: "700 CAL",
+                highlight: true
+              },
+              {
+                title: "Tormentoso Bush Pizza Pintoage",
+                price: "14$",
+                desc: "Ground cumin, avocados, peeled and cubed",
+                cal: "1000 CAL"
+              },
+              {
+                title: "Spicy Vegan Potato Curry",
+                price: "35$",
+                desc: "Spreadable cream cheese, crumbled blue cheese",
+                cal: "560 CAL"
+              }
+            ].map((item, index, arr) => (
+              <div key={index} className={index !== arr.length - 1 ? "border-b border-gray-700 pb-4" : ""}>
+                <div className="flex justify-between">
+                  <h2 className={`text-lg md:text-xl font-semibold ${item.highlight ? 'text-orange-500' : ''}`}>
+                    {item.title}
+                  </h2>
+                  <span className="text-orange-500 text-lg">{item.price}</span>
+                </div>
+                <p className="text-gray-400 text-sm md:text-base">{item.desc}</p>
+                <p className="text-gray-500 text-xs md:text-sm mt-2">{item.cal}</p>
               </div>
-              <p className="text-gray-400">Spreadable cream cheese, crumbled blue cheese</p>
-              <p className="text-gray-500 text-sm mt-2">560 CAL</p>
-            </div>
-            {/* Menu Item */}
-            <div className="border-b border-gray-700 pb-4">
-              <div className="flex justify-between">
-                <h2 className="text-xl font-semibold">Alder Grilled Chinook Salmon</h2>
-                <span className="text-orange-500 text-lg">32$</span>
-              </div>
-              <p className="text-gray-400">Toasted French bread topped with romano, cheddar</p>
-              <p className="text-gray-500 text-sm mt-2">560 CAL</p>
-            </div>
-
-            {/* Menu Item */}
-            <div className="border-b border-gray-700 pb-4">
-              <div className="flex justify-between">
-                <h2 className="text-xl font-semibold text-orange-500">Berries and creme tart</h2>
-                <span className="text-orange-500 text-lg">43$</span>
-              </div>
-              <p className="text-gray-400">Gorgonzola, ricotta, mozzarella, taleggio</p>
-              <p className="text-gray-500 text-sm mt-2">700 CAL</p>
-            </div>
-
-            {/* Menu Item */}
-            <div className="border-b border-gray-700 pb-4">
-              <div className="flex justify-between">
-                <h2 className="text-xl font-semibold">Tormentoso Bush Pizza Pintoage</h2>
-                <span className="text-orange-500 text-lg">14$</span>
-              </div>
-              <p className="text-gray-400">Ground cumin, avocados, peeled and cubed</p>
-              <p className="text-gray-500 text-sm mt-2">1000 CAL</p>
-            </div>
-
-            {/* Menu Item */}
-            <div>
-              <div className="flex justify-between">
-                <h2 className="text-xl font-semibold">Spicy Vegan Potato Curry</h2>
-                <span className="text-orange-500 text-lg">35$</span>
-              </div>
-              <p className="text-gray-400">Spreadable cream cheese, crumbled blue cheese</p>
-              <p className="text-gray-500 text-sm mt-2">560 CAL</p>
-            </div>
+            ))}
           </div>
         </div>
       </div>
-      <div className=" mt-24">
-          <div className="flex flex-col items-center justify-center">
-            <h1 className= "text-gray-400">partners and clients</h1>
-            <p className="text-4xl">work with the best people</p>
-          </div>
-          <div className='flex px-20 justify-center gap-4 mt-8 mb-8 '>
-            <Image src='/menuicon.png' alt='menuicon' width ={130} height={130}/>
-            <Image src='/menuicon1.png' alt='menuicon' width ={130} height={130}/>
-           <Image src='/menuicon2.png' alt='menuicon' width ={130} height={130}/>
-            <Image src='/menuicon3.png' alt='menuicon' width ={130} height={130}/>
-            <Image src='/menuicon4.png' alt='menuicon' width ={130} height={130}/>
-            <Image src='/menuicon5.png' alt='menuicon' width ={130} height={130}/>
 
+      {/* Partners Section */}
+      <div className="w-full px-4 py-12 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8">
+            <h3 className="text-gray-400 text-sm md:text-base uppercase tracking-wider">partners and clients</h3>
+            <p className="text-2xl md:text-3xl lg:text-4xl font-semibold mt-2">work with the best people</p>
           </div>
-          <div className=''> {/* Added margin top to create space between child divs */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 justify-items-center">
+            {[
+              'menuicon.png',
+              'menuicon1.png',
+              'menuicon2.png',
+              'menuicon3.png',
+              'menuicon4.png',
+              'menuicon5.png'
+            ].map((icon, index) => (
+              <Image
+                key={index}
+                src={`/${icon}`}
+                alt={`Partner ${index + 1}`}
+                width={130}
+                height={130}
+                className="w-24 md:w-32"
+              />
+            ))}
           </div>
         </div>
+      </div>
     </div>
   );
 }
