@@ -26,7 +26,7 @@ export default function BlogCard() {
                         <span className="block text-xs sm:text-sm">Feb</span>
                     </div>
                 </div>
-                <div className="p-4 sm:p-5 md:p-6">
+                <div className='p-4 sm:p-5 md:p-6'>
                     <div className="flex items-center text-xs sm:text-sm md:text-sm text-gray-500 flex-wrap">
                         <span className='hover:text-orange-400'> <FaCalendar className="w-3 sm:w-4 h-3 sm:h-4" /> </span>Feb 14, 2022
                         <span className="mx-1 sm:mx-2">|</span>

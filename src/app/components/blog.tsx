@@ -9,7 +9,7 @@ type BlogPost = {
 
 const blogPosts: BlogPost[] = [
   {
-    image: "/blog.png",
+    image: '/blog.png',
     date: "10 February 2022",
     title: "Pellentesque Non Efficitur Mi Aliquam Convallis Mi Quis",
     link: "#",

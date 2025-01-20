@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { FaFacebook, FaGoogle } from 'react-icons/fa';
-import Header from '.././components/header'
+import Header from ".././components/header"
 
 export default function Signin() {
   return (

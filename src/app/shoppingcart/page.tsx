@@ -1,7 +1,7 @@
 'use client'
 import Header from ".././components/header";
 import React, { useState } from 'react';
-import Image from 'next/image'; // Use this if using Next.js, otherwise use <img>
+import Image from "next/image"; // Use this if using Next.js, otherwise use <img>
 
 interface CartItem {
   id: number;

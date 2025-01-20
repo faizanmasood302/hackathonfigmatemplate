@@ -9,7 +9,7 @@ interface Chef {
 }
 
 const chefs: Chef[] = [
-  { id: 1, name: "Chef John", imageUrl: "/ourchefs1.png" },
+  { id: 1, name: 'Chef John', imageUrl: "/ourchefs1.png" },
   { id: 2, name: "Chef Alice", imageUrl: "/ourchefs2.png" },
   { id: 3, name: "Chef Marco", imageUrl: "/ourchefs3.png" },
   { id: 4, name: "Chef Maria", imageUrl: "/ourchefs4.png" },

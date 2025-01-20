@@ -8,7 +8,7 @@ const ProductAdditionalInfo = () => {
   const similarProducts = [
     {
       id: 1,
-      name: "Fresh Lime",
+      name: 'Fresh Lime',
       price: "$38.00",
       oldPrice: "$45.00",
       ImageUrl: "/shop1.png",

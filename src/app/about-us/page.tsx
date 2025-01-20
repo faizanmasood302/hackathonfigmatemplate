@@ -7,7 +7,7 @@ function about() {
   return (
     <>
       <Header>
-        <div className="absolute inset-0 flex flex-col gap-6 items-center justify-center text-center">
+        <div className='absolute inset-0 flex flex-col gap-6 items-center justify-center text-center'>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">FAQ</h1>
           <p className="text-white text-xl md:text-2xl font-semibold">
             <span className="text-orange-500">Home</span> &gt; FAQ
