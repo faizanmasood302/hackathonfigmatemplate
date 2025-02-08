@@ -86,7 +86,7 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     const userId = (await cookies()).get('user-id')?.value;
 

@@ -97,6 +97,7 @@ export default function Menu() {
             className="rounded-lg w-full max-w-md object-cover"
           />
         </div>
+        
         {/* Description on Left */}
         <div className="w-full lg:w-1/2 px-4 lg:px-8">
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 flex items-center">
