@@ -1,69 +1,82 @@
-'use client'
-import Header from ".././components/header";
-import React, { useState } from 'react';
-import Image from 'next/image'; // Use this if using Next.js, otherwise use <img>
+"use client";
+import { useRouter } from "next/navigation";
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import Header from "../components/header";
+import { urlFor } from "@/sanity/lib/image";
+import Link from "next/link";
 
 interface CartItem {
-  id: number;
+  _key: string;
+  productId: string;
   name: string;
-  price: number;
   image: string;
+  price: number;
   quantity: number;
+  rating: number;
+  total: number;
 }
 
-const initialCartItems: CartItem[] = [
-  { id: 1, name: 'Burger', price: 35.0, image: '/burger.png', quantity: 1 },
-  { id: 2, name: 'pasta', price: 26.0, image: '/pasta.png', quantity: 1 },
-  { id: 3, name: 'doritoplatter', price: 15.0, image: '/doritoplatter.png', quantity: 1 },
-  { id: 4, name: 'cheese burger', price: 45.0, image: '/burger2.png', quantity: 1 },
-  { id: 5, name: 'meatball', price: 15.0, image: '/meatball.png', quantity: 1 },
-];
-
 const ShoppingCart: React.FC = () => {
-  const [cartItems, setCartItems] = useState<CartItem[]>(initialCartItems);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const router = useRouter();
 
-  const incrementQuantity = (id: number) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
+  const handleCheckout = () => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+    router.push("/shippingcart");
   };
 
-  const decrementQuantity = (id: number) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id && item.quantity > 1
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
-      )
-    );
+  useEffect(() => {
+    const fetchCart = async () => {
+      try {
+        const response = await fetch("/api/cart");
+        if (!response.ok) {
+          throw new Error("Failed to fetch cart items.");
+        }
+        const data = await response.json();
+        setCartItems(data.cart || []);
+      } catch (error) {
+        console.error("Error fetching cart items:", error);
+      }
+    };
+    fetchCart();
+  }, []);
+
+  const handleRemoveItem = async (key: string) => {
+    try {
+      const response = await fetch(`/api/cart`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ key }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to remove item from cart");
+      }
+
+      setCartItems(cartItems.filter((item) => item._key !== key));
+    } catch (error) {
+      console.error("Error removing item from cart:", error);
+    }
   };
 
-  const calculateTotal = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
-  };
-
-  const removeItem = (id: number) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
-  };
+  const totalPrice = cartItems.reduce((acc, item) => acc + item.total, 0);
 
   return (
     <>
-    <Header>
-        <div className="absolute inset-0 flex flex-col gap-6 items-center justify-center text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">FAQ</h1>
-          <p className="text-white text-xl md:text-2xl font-semibold">
-            <span className="text-orange-500">Home</span> &gt; FAQ
+      <Header>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <p className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">
+            Home &gt; Shopping Cart
           </p>
         </div>
       </Header>
-    <div className="container mx-auto px-4 py-8">
-      {/* Table Section */}
-      <div className="w-full overflow-x-auto">
-        <table className="w-full border-collapse">
+
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-2xl font-bold mb-6">Shopping Cart</h1>
+        <table className="w-full border-collapse border border-gray-300 mb-6">
           <thead>
-            <tr className="bg-gray-200">
+            <tr className="bg-gray-100">
               <th className="p-4 text-left">Product</th>
               <th className="p-4">Price</th>
               <th className="p-4">Quantity</th>
@@ -72,90 +85,95 @@ const ShoppingCart: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {cartItems.map((item) => (
-              <tr key={item.id} className="border-b">
-                <td className="p-4 flex items-center">
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    width={60}
-                    height={60}
-                    className="rounded-md mr-4"
-                  />
-                  <span className="font-semibold">{item.name}</span>
-                </td>
-                <td className="p-4 text-center">${item.price.toFixed(2)}</td>
-                <td className="p-4 text-center">
-                  <div className="inline-flex items-center border rounded">
-                    <button
-                      className="px-2 py-1 border-r"
-                      onClick={() => decrementQuantity(item.id)}
-                    >
-                      -
-                    </button>
-                    <span className="px-4">{item.quantity}</span>
-                    <button
-                      className="px-2 py-1 border-l"
-                      onClick={() => incrementQuantity(item.id)}
-                    >
-                      +
-                    </button>
-                  </div>
-                </td>
-                <td className="p-4 text-center font-semibold">
-                  ${(item.price * item.quantity).toFixed(2)}
-                </td>
-                <td
-                  className="p-4 text-center text-red-500 cursor-pointer"
-                  onClick={() => removeItem(item.id)}
-                >
-                  &times;
-                </td>
-              </tr>
+  {cartItems.map((item) => (
+    <tr key={item._key} className="border-b border-gray-300">
+      <td className="p-4 flex items-center gap-4">
+        <Image
+          src={urlFor(item.image || "/placeholder.png")}
+          alt={item.name || "Product Image"}
+          width={60}
+          height={60}
+          className="rounded"
+        />
+        <div>
+          <span className="font-semibold block">{item.name}</span>
+          <div className="flex">
+            {[...Array(5)].map((_, index) => (
+              <span
+                key={index}
+                className={`text-lg ${index < item.rating ? "text-yellow-500" : "text-gray-300"}`}
+              >
+                ★
+              </span>
             ))}
-          </tbody>
-        </table>
-      </div>
-
-      {/* Coupon and Summary Section */}
-      <div className="flex flex-col md:flex-row justify-between mt-8">
-        {/* Coupon Code */}
-        <div className="md:w-1/2 w-full p-4">
-          <h2 className="font-semibold mb-4">Coupon Code</h2>
-          <div className="flex items-center border rounded">
-            <input
-              type="text"
-              placeholder="Enter coupon code"
-              className="w-full p-2 border-none focus:outline-none"
-            />
-            <button className="bg-orange-500 text-white px-4 py-2">Apply</button>
           </div>
         </div>
+      </td>
+      <td className="p-4 text-center">${item.price.toFixed(2)}</td>
+      <td className="p-4 text-center">
+        <div className="flex items-center justify-center border border-gray-300 rounded w-fit mx-auto">
+          <button
+            onClick={() => {
+              const newQuantity = item.quantity > 1 ? item.quantity - 1 : 1;
+              setCartItems(
+                cartItems.map((cartItem) =>
+                  cartItem._key === item._key
+                    ? { ...cartItem, quantity: newQuantity, total: newQuantity * cartItem.price }
+                    : cartItem
+                )
+              );
+            }}
+            className="px-3 py-1 bg-gray-200 rounded-l hover:bg-gray-300"
+          >
+            -
+          </button>
+          <span className="px-4 py-1 border-x">{item.quantity}</span>
+          <button
+            onClick={() => {
+              const newQuantity = item.quantity + 1;
+              setCartItems(
+                cartItems.map((cartItem) =>
+                  cartItem._key === item._key
+                    ? { ...cartItem, quantity: newQuantity, total: newQuantity * cartItem.price }
+                    : cartItem
+                )
+              );
+            }}
+            className="px-3 py-1 bg-gray-200 rounded-r hover:bg-gray-300"
+          >
+            +
+          </button>
+        </div>
+      </td>
+      <td className="p-4 text-center font-semibold">${item.total.toFixed(2)}</td>
+      <td className="p-4 text-center">
+        <button
+          className="text-orange-500 hover:text-orange-600 focus:outline-none"
+          onClick={() => handleRemoveItem(item._key)}
+        >
+          ✖
+        </button>
+      </td>
+    </tr>
+  ))}
+</tbody>
+        </table>
 
-        {/* Total Bill */}
-        <div className="md:w-1/3 w-full p-4">
-          <h2 className="font-semibold mb-4">Total Bill</h2>
-          <div className="border p-4 rounded-md">
-            <div className="flex justify-between mb-2">
-              <span>Cart Subtotal</span>
-              <span className="font-semibold">${calculateTotal().toFixed(2)}</span>
-            </div>
-            <div className="flex justify-between mb-2">
-              <span>Shipping Charge</span>
-              <span className="font-semibold">$00.00</span>
-            </div>
-            <hr className="my-2" />
-            <div className="flex justify-between font-bold">
-              <span>Total Amount</span>
-              <span>${calculateTotal().toFixed(2)}</span>
-            </div>
+        <div className="w-full md:w-1/3 p-4 border border-gray-300 rounded">
+          <h3 className="font-bold mb-2">Total Bill</h3>
+          <div className="flex justify-between text-lg mb-2">
+            <span>Cart Subtotal</span>
+            <span>${totalPrice.toFixed(2)}</span>
           </div>
-          <button className="w-full mt-4 bg-orange-500 text-white p-2 rounded hover:bg-orange-600">
+          <div className="flex justify-between font-bold text-xl">
+            <span>Total Amount</span>
+            <span>${totalPrice.toFixed(2)}</span>
+          </div>
+          <button onClick={handleCheckout} className="bg-orange-500 text-white w-full mt-4 py-2 rounded hover:bg-orange-600">
             Proceed to Checkout
           </button>
         </div>
       </div>
-    </div>
     </>
   );
 };
