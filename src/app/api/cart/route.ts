@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
     if (existingCart) {
       // Check if the product is already in the cart
       const existingItemIndex = existingCart.Cartitems?.findIndex(
-        (item: any) => item.productId === productId
+        (item: { productId: string }) => item.productId === productId
       );
 
       if (existingItemIndex !== -1) {
@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
       } else {
         // Product does not exist, add it as a new item
         const newItem = {
-          _key: uuidv4(), // Unique key
+          _key: uuidv4(),
           productId,
           image,
           name,
@@ -88,7 +88,7 @@ export async function POST(req: NextRequest) {
 
 export async function GET(req: NextRequest) {
   try {
-    let userId = (await cookies()).get('user-id')?.value;
+    const userId = (await cookies()).get('user-id')?.value;
 
     if (!userId) {
       return NextResponse.json({ cart: [] });
@@ -107,7 +107,7 @@ export async function GET(req: NextRequest) {
 export async function DELETE(req: NextRequest) {
   try {
     const { key } = await req.json();
-    let userId = (await cookies()).get('user-id')?.value;
+    const userId = (await cookies()).get('user-id')?.value;
 
     if (!userId) {
       return NextResponse.json({ error: 'User not found' }, { status: 400 });
@@ -119,7 +119,9 @@ export async function DELETE(req: NextRequest) {
 
     if (existingCart) {
       // Remove the item from the cart
-      const updatedCartItems = existingCart.Cartitems.filter((item: any) => item._key !== key);
+      const updatedCartItems = existingCart.Cartitems.filter(
+        (item: { _key: string }) => item._key !== key
+      );
 
       await client
         .patch(existingCart._id)

@@ -31,7 +31,7 @@ function SignupForm() {
       } else {
         setError(data.message || "Signup failed. Try again.");
       }
-    } catch (err) {
+    } catch {
       setError("Something went wrong. Please try again.");
     }
   };

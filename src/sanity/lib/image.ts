@@ -13,6 +13,6 @@ import { client } from '@/sanity/lib/client'; // Adjust the path to your Sanity 
 
 const builder = imageUrlBuilder(client);
 
-export function urlFor(source: any) {
+export function urlFor(source: string) {
   return builder.image(source).url();
 }

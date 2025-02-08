@@ -4,8 +4,6 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Header from "../components/header";
 import { urlFor } from "@/sanity/lib/image";
-import Link from "next/link";
-
 interface CartItem {
   _key: string;
   productId: string;

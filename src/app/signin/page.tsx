@@ -29,7 +29,7 @@ function SigninForm({ callbackUrl }: { callbackUrl: string }) {
       } else {
         setError(data.message || "Invalid email or password.");
       }
-    } catch (err) {
+    } catch{
       setError("Something went wrong. Please try again.");
     }
   };

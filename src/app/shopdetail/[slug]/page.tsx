@@ -7,9 +7,6 @@ import Image from 'next/image'
 import { FaHeart, FaExchangeAlt, FaStar } from 'react-icons/fa'
 import Header from '@/app/components/header'
 import ProductCard from '@/app/handleaddtocart'
-import { urlFor } from '@/sanity/lib/image'
-import Link from 'next/link'
-import router from 'next/router';
 interface Review {
   reviewer: string
   rating: number
@@ -231,14 +228,10 @@ const ShopDetail: React.FC = () => {
       } else {
         alert(`Error: ${data.error || 'Something went wrong'}`)
       }
-    } catch (error) {
+    } catch{
       alert('Error submitting review.')
     }
   }
-
-
- 
-  
   return (
     <>
       <Header>

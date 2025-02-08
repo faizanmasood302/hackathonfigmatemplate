@@ -26,7 +26,7 @@ export async function POST(req: Request) {
     response.cookies.set('auth_token', token, { httpOnly: true, secure: true });
 
     return response;
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Login failed' }, { status: 500 });
-  }
+}
 }

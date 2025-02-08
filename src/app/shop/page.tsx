@@ -7,7 +7,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FaSearch } from "react-icons/fa"
 import { client } from '@/sanity/lib/client'
-import { useRouter } from 'next/navigation';
 import {
     Pagination,
     PaginationContent,
