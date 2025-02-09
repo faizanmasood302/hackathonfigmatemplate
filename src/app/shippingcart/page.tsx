@@ -242,7 +242,7 @@ const Checkout: React.FC = () => {
             <span>${subtotal.toFixed(2)}</span>
           </div>
           <div className="flex justify-between text-gray-700">
-            <span>Discount (10%)</span>
+            <span>Discount (0)</span>
             <span>-${discount.toFixed(2)}</span>
           </div>
           <div className="flex justify-between text-gray-700">
