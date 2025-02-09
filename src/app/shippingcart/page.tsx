@@ -214,13 +214,11 @@ const Checkout: React.FC = () => {
             <input type="text" placeholder="Last name" className="p-3 border rounded w-full" />
             <input type="email" placeholder="Email address" className="p-3 border rounded w-full" />
             <input type="text" placeholder="Phone number" className="p-3 border rounded w-full" />
-            <input type="text" placeholder="Company" className="p-3 border rounded w-full" />
-            <select className="p-3 border rounded w-full"><option>Choose country</option></select>
-            <select className="p-3 border rounded w-full"><option>Choose city</option></select>
-            <input type="text" placeholder="Zip code" className="p-3 border rounded w-full" />
             <input type="text" placeholder="Address 1" className="p-3 border rounded w-full col-span-2" />
             <input type="text" placeholder="Address 2" className="p-3 border rounded w-full col-span-2" />
+            <input type="text" placeholder="Zip code" className="p-3 border rounded w-full" />
           </form>
+          
         </div>
 
         {/* Order Summary */}
