@@ -37,8 +37,13 @@ function SignupForm() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen my-40">
+    <div className="flex items-center justify-center min-h-screen ">
       <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+      <div className="text-center mb-4 text-3xl font-bold">
+          <span className="text-black">Food</span>
+          <span className="text-orange-500">Tuck</span>
+        </div>
+
         <h2 className="text-2xl font-bold text-gray-800">Sign Up</h2>
         {error && <p className="text-red-500">{error}</p>}
         <form onSubmit={handleSubmit} className="mt-6">

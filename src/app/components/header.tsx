@@ -506,7 +506,7 @@ export default function Header({ children }: HeaderProps) {
         {/* Logo */}
         <div className="text-2xl font-bold">
           <span className="text-white">Food</span>
-          <span className="text-orange-500">luck</span>
+          <span className="text-orange-500">Tuck</span>
         </div>
 
         {/* Navigation */}

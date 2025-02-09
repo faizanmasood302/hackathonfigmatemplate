@@ -29,15 +29,23 @@ function SigninForm({ callbackUrl }: { callbackUrl: string }) {
       } else {
         setError(data.message || "Invalid email or password.");
       }
-    } catch{
+    } catch {
       setError("Something went wrong. Please try again.");
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen my-40">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md relative">
+        
+        {/* Website Branding on Top */}
+        <div className="text-center mb-4 text-3xl font-bold">
+          <span className="text-black">Food</span>
+          <span className="text-orange-500">Tuck</span>
+        </div>
+
         <h2 className="text-2xl font-bold text-gray-800">Sign In</h2>
+        
         {error && <p className="text-red-500">{error}</p>}
 
         <form onSubmit={handleSubmit} className="mt-6">
@@ -104,6 +112,9 @@ function SigninForm({ callbackUrl }: { callbackUrl: string }) {
             Don&apos;t have an account? <Link href="/signup" className="hover:underline">Sign up</Link>
           </p>
         </div>
+
+        {/* Branding on the Bottom Right */}
+
       </div>
     </div>
   );

@@ -22,7 +22,7 @@ export default function HomeHeader() {
     <header className="fixed top-0 left-0 w-full bg-transparent z-20">
       <div className="flex justify-center items-center space-x-1 mt-4">
         <h1 className="font-bold text-orange-500">Food</h1>
-        <h1 className="font-bold text-white">tuck</h1>
+        <h1 className="font-bold text-white">Tuck</h1>
       </div>
       <div className="flex justify-between items-center px-4 md:px-8 lg:px-20 py-4">
         {/* Hamburger Menu for Mobile */}
@@ -34,7 +34,7 @@ export default function HomeHeader() {
             <SheetHeader>
               <SheetTitle> <div className="flex justify-center items-center space-x-1 mt-4">
                <h1 className="font-bold text-orange-500">Food</h1>
-               <h1 className="font-bold text-white">tuck</h1>
+               <h1 className="font-bold text-white">Tuck</h1>
               </div></SheetTitle>
             </SheetHeader>
             <nav className="mt-4 space-y-4">
