@@ -1,6 +1,6 @@
 import { Rule } from "sanity";
 
-export default {
+const productschema = {
   name: "product",
   title: "Product",
   type: "document",
@@ -137,3 +137,4 @@ export default {
     },
   ],
 };
+export default productschema
