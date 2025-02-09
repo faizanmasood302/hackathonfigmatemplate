@@ -217,6 +217,7 @@ const Checkout: React.FC = () => {
             <input type="text" placeholder="Address 1" className="p-3 border rounded w-full col-span-2" />
             <input type="text" placeholder="Address 2" className="p-3 border rounded w-full col-span-2" />
             <input type="text" placeholder="Zip code" className="p-3 border rounded w-full" />
+
           </form>
           
         </div>
@@ -242,7 +243,7 @@ const Checkout: React.FC = () => {
             <span>${subtotal.toFixed(2)}</span>
           </div>
           <div className="flex justify-between text-gray-700">
-            <span>Discount (0)</span>
+            <span>Discount (10%)</span>
             <span>-${discount.toFixed(2)}</span>
           </div>
           <div className="flex justify-between text-gray-700">
